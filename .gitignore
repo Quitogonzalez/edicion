@@ -5,3 +5,15 @@ dist
 
 # Ignore the output video from Git but not videos you import into src/.
 out
+
+# Pipeline de edición: media pesada y artefactos de trabajo (no versionar)
+footage/
+transcripts/
+edit/
+*.mp4
+*.mov
+*.wav
+# ...pero sí permitir b-roll/fuentes que importes a public/ y src/
+!public/**/*.mp4
+!public/**/*.mov
+!src/**/*.mp4

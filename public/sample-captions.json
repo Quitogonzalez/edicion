@@ -1,0 +1,9 @@
+[
+  { "text": "Dirijo", "startMs": 0, "endMs": 450, "timestampMs": 200, "confidence": 1 },
+  { "text": " la", "startMs": 450, "endMs": 650, "timestampMs": 550, "confidence": 1 },
+  { "text": " IA", "startMs": 650, "endMs": 1000, "timestampMs": 820, "confidence": 1 },
+  { "text": " para", "startMs": 1000, "endMs": 1300, "timestampMs": 1150, "confidence": 1 },
+  { "text": " construir", "startMs": 1300, "endMs": 1850, "timestampMs": 1550, "confidence": 1 },
+  { "text": " cosas", "startMs": 1850, "endMs": 2250, "timestampMs": 2050, "confidence": 1 },
+  { "text": " reales", "startMs": 2250, "endMs": 2900, "timestampMs": 2550, "confidence": 1 }
+]

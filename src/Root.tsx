@@ -1,17 +1,28 @@
 import "./index.css";
 import { Composition } from "remotion";
-import { MyComposition } from "./Composition";
+import { VIDEO } from "./theme";
+import { Reel, REEL_DURATION } from "./Reel";
+import { KaraokeDemo, KARAOKE_DEMO_FRAMES } from "./scenes/KaraokeDemo";
 
+// Todas las composiciones son 9:16 (1080×1920 @30fps) — specs de marca.
 export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Composition
-        id="MyComp"
-        component={MyComposition}
-        durationInFrames={60}
-        fps={30}
-        width={1280}
-        height={720}
+        id="Reel"
+        component={Reel}
+        durationInFrames={REEL_DURATION}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+      <Composition
+        id="KaraokeDemo"
+        component={KaraokeDemo}
+        durationInFrames={KARAOKE_DEMO_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
       />
     </>
   );
