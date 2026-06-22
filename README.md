@@ -1,54 +1,61 @@
-# Remotion video
+# 🎬 edicion — editar reels dirigiendo a Claude
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+Infraestructura para producir **reels verticales 9:16** (1080×1920, 30fps) para IG/TikTok
+dirigiendo a Claude Code. **Yo dirijo, Claude ejecuta.**
 
-Welcome to your Remotion project!
+## Propósito
+Pasar de editar a mano (horas) a **dirigir la edición con prompts** (minutos), manteniendo
+la marca: dev build-in-público sobre IA, estética **minimalista y cercana**, fondo oscuro
+tipo editor + **un solo color de acento** (`#3FB950`), captions karaoke, anti-vendehúmo.
+4 pilares: Dirigiendo a la IA · Construyendo en público · Disciplina y sistema · Opinión con criterio.
 
-## Commands
+## Cómo funciona — 2 ambientes
+1. **El corte** → `video-use` + transcripción gratis con **MacWhisper** (sin pagar ElevenLabs):
+   elimina muletillas, silencios y retomas, y estructura según el guion.
+2. **Motion graphics** → **HyperFrames** (subtítulos karaoke palabra-por-palabra + lower-thirds/
+   callouts sobre el footage) y **Remotion** (escenas de marca desde cero: hooks, intros, data-viz).
+   El agente `social-media-strategist` decide **QUÉ** sumar.
 
-**Install Dependencies**
+## Cómo se usa
+1. Dejá el video en `footage/`.
+2. Abrí Claude Code en esta carpeta y decí **"edita este reel"**.
+3. La skill `reel-editor` orquesta todo con las reglas de marca (incluida la regla crítica:
+   **nunca sobrescribir una escena — siempre crear V2/V3**).
 
-```console
-npm i
+📘 **Guía completa de uso y delegación:** [`Resources/GUIA-DE-USO.md`](Resources/GUIA-DE-USO.md)
+(o el PDF `Resources/GUIA-DE-USO.pdf`).
+
+## Stack
+| Herramienta | Rol |
+|---|---|
+| `video-use` | Corte dirigido por transcript |
+| HyperFrames | Captions karaoke + overlays sobre footage |
+| Remotion (este proyecto) | Escenas de marca 9:16 con `src/theme.ts` |
+| MacWhisper / OpenAI Whisper | Transcripción (vía `scripts/transcribe.py`, sin ElevenLabs) |
+| Agente `social-media-strategist` | Dirección creativa (el "qué") |
+| Skill `reel-editor` | Orquesta los 2 ambientes |
+
+## Estructura
+```
+.claude/skills/reel-editor/   La skill que orquesta (SKILL.md + references/)
+Resources/                    Lineamientos + GUIA-DE-USO (md/pdf) + cheatsheet
+src/                          theme · fonts · components (Karaoke, motion) · scenes · Reel · Root
+scripts/                      transcribe.py (adapter) · silences.py
+footage/ transcripts/ out/    media (gitignored) · project.md (memoria de sesión)
 ```
 
-**Start Preview**
+## Setup (una vez)
+```bash
+cp .env.example .env     # pegá tu OPENAI_API_KEY (opcional; gitignored)
+npm install              # deps de Remotion
+npm run dev              # Studio en localhost:3000 (probá la composición KaraokeDemo)
+```
+MacWhisper es la transcripción por defecto (gratis/local). ElevenLabs es opcional.
 
-```console
-npm run dev
+## Render
+```bash
+npx remotion render Reel out/reel.mp4 --codec h264
 ```
 
-**Render video**
-
-```console
-npx remotion render
-```
-
-**Upgrade Remotion**
-
-```console
-npx remotion upgrade
-```
-
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Help
-
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+---
+🤖 Generado con [Claude Code](https://claude.com/claude-code)
