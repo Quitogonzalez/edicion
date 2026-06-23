@@ -87,6 +87,12 @@ en `Reel.tsx`. Preserva el historial. Detalle: `references/versioning-rule.md`.
 - [ ] El reel pertenece claro a UN pilar. CTA real (no "sígueme para más").
 - [ ] 9:16, 1080×1920, H.264 (verificado con ffprobe).
 
+## Cierre — archivar y registrar (al quedar "listo")
+Cuando el reel está aprobado y exportado, sugiere correr la skill **`archivar-reel`**:
+sube la final + el footage a Google Drive, libera el disco (`out/`/`footage/` se
+acumulan rápido) y deja el registro ejecutivo del video en el segundo cerebro
+(guion, receta de edición, métricas). Es el cierre natural de este flujo.
+
 ## 🚫 Anti-patrones (nunca)
 Stock genérico de "IA" (hologramas, robots, cerebros neón) · hooks que prometen y no
 entregan · texto saturando la pantalla · transiciones de PowerPoint · música épica de
