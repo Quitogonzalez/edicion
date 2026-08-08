@@ -1,14 +1,9 @@
 ---
 name: archivar-reel
-description: Use al terminar un reel (estado "listo") o cuando Quito pida "archiva este reel", "súbelo a Drive y bórralo", "documenta este video / reel", "libera espacio del out". Archiva la versión final + el footage original en Google Drive (vía rclone), libera disco, y deja un registro ejecutivo del video en el segundo cerebro (área RedSocialBot del vault): resumen, guion, receta de edición y métricas. La invoca/sugiere reel-editor al cerrar un reel. NO la uses para editar (eso es reel-editor) ni para documentar la sesión de trabajo (eso es documentar-avance).
+description: >-
+  Use al terminar un reel (estado "listo") o cuando Quito pida "archiva este reel", "súbelo a Drive y bórralo", "documenta este video / reel", "libera espacio del out". Archiva la versión final + el footage original en Google Drive (vía rclone), libera disco, y deja un registro ejecutivo del video en el segundo cerebro (área RedSocialBot del vault): resumen, guion, receta de edición y métricas. La invoca/sugiere reel-editor al cerrar un reel. NO la uses para editar (eso es reel-editor) ni para documentar la sesión de trabajo (eso es documentar-avance).
 argument-hint: "[slug o archivo del reel, opcional]"
 allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Bash
-  - Glob
-  - AskUserQuestion
 ---
 
 # Archivar un reel — Drive + registro en el segundo cerebro

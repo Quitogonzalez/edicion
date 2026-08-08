@@ -1,17 +1,11 @@
-// ─────────────────────────────────────────────────────────────────────────
-//  KaraokeCaptions.tsx — subtítulos estilo CapCut, palabra por palabra.
-//  La palabra activa se resalta con el color de acento. Respeta safe zones.
-//  Acepta `captions` (Caption[]) directo, o `captionsSrc` (JSON en public/).
-//
-//  Formato Caption (de @remotion/captions):
-//    { text, startMs, endMs, timestampMs, confidence }
-//  Genera ese JSON con el adapter de transcripción (scripts/) desde
-//  MacWhisper / `npx hyperframes transcribe` / OpenAI Whisper.
-// ─────────────────────────────────────────────────────────────────────────
+// Captions — KARAOKE: grupos cortos (~1.1s, 3-4 palabras) y la palabra que se está
+// diciendo se ilumina en verde; las que faltan van atenuadas. Sincronizado por token.
+// Se pueden ocultar en ventanas puntuales (ej. gráfica full-screen en vez del subtítulo).
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   AbsoluteFill,
   Sequence,
+  interpolate,
   staticFile,
   useCurrentFrame,
   useDelayRender,
@@ -24,22 +18,17 @@ import {
 } from "@remotion/captions";
 import { theme, SAFE } from "../theme";
 
-// Cuántos ms agrupar por "página". Más bajo = más palabra-por-palabra.
-const SWITCH_EVERY_MS = 900;
+// Karaoke: grupos cortos (~3-4 palabras) para que sea transitorio, no frases largas.
+const SWITCH_EVERY_MS = 1100;
 
 export const KaraokeCaptions: React.FC<{
   captions?: Caption[];
   captionsSrc?: string;
-  /** Color de la palabra activa (default: acento de marca). */
-  highlight?: string;
-}> = ({ captions: captionsProp, captionsSrc, highlight = theme.colors.accent }) => {
-  const [captions, setCaptions] = useState<Caption[] | null>(
-    captionsProp ?? null,
-  );
+  hideWindows?: [number, number][]; // segundos donde NO mostrar subtítulo
+}> = ({ captions: captionsProp, captionsSrc, hideWindows = [] }) => {
+  const [captions, setCaptions] = useState<Caption[] | null>(captionsProp ?? null);
   const { delayRender, continueRender, cancelRender } = useDelayRender();
-  const [handle] = useState(() =>
-    captionsProp ? null : delayRender("fetch-captions"),
-  );
+  const [handle] = useState(() => (captionsProp ? null : delayRender("fetch-captions")));
 
   const fetchCaptions = useCallback(async () => {
     if (!captionsSrc || handle === null) return;
@@ -57,20 +46,16 @@ export const KaraokeCaptions: React.FC<{
   }, [fetchCaptions]);
 
   if (!captions) return null;
-  return <CaptionTrack captions={captions} highlight={highlight} />;
+  return <CaptionTrack captions={captions} hideWindows={hideWindows} />;
 };
 
-const CaptionTrack: React.FC<{ captions: Caption[]; highlight: string }> = ({
+const CaptionTrack: React.FC<{ captions: Caption[]; hideWindows: [number, number][] }> = ({
   captions,
-  highlight,
+  hideWindows,
 }) => {
   const { fps } = useVideoConfig();
   const { pages } = useMemo(
-    () =>
-      createTikTokStyleCaptions({
-        captions,
-        combineTokensWithinMilliseconds: SWITCH_EVERY_MS,
-      }),
+    () => createTikTokStyleCaptions({ captions, combineTokensWithinMilliseconds: SWITCH_EVERY_MS }),
     [captions],
   );
 
@@ -78,16 +63,18 @@ const CaptionTrack: React.FC<{ captions: Caption[]; highlight: string }> = ({
     <AbsoluteFill>
       {pages.map((page, i) => {
         const next = pages[i + 1] ?? null;
-        const startFrame = (page.startMs / 1000) * fps;
+        const startSec = page.startMs / 1000;
+        const hidden = hideWindows.some(([a, b]) => startSec >= a && startSec < b);
+        if (hidden) return null;
+        const startFrame = startSec * fps;
         const endFrame = Math.min(
           next ? (next.startMs / 1000) * fps : Infinity,
           startFrame + (SWITCH_EVERY_MS / 1000) * fps,
         );
-        const durationInFrames = endFrame - startFrame;
-        if (durationInFrames <= 0) return null;
+        const durationInFrames = Math.max(1, Math.round(endFrame - startFrame));
         return (
-          <Sequence key={i} from={startFrame} durationInFrames={durationInFrames}>
-            <CaptionPage page={page} highlight={highlight} />
+          <Sequence key={i} from={Math.round(startFrame)} durationInFrames={durationInFrames}>
+            <CaptionPage page={page} />
           </Sequence>
         );
       })}
@@ -95,20 +82,24 @@ const CaptionTrack: React.FC<{ captions: Caption[]; highlight: string }> = ({
   );
 };
 
-const CaptionPage: React.FC<{ page: TikTokPage; highlight: string }> = ({
-  page,
-  highlight,
-}) => {
+const CaptionPage: React.FC<{ page: TikTokPage }> = ({ page }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const absoluteTimeMs = page.startMs + (frame / fps) * 1000;
+  const { durationInFrames, fps } = useVideoConfig();
+  const absMs = page.startMs + (frame / fps) * 1000; // tiempo absoluto en el timeline
+
+  const opacity = interpolate(
+    frame,
+    [0, 3, durationInFrames - 4, durationInFrames],
+    [0, 1, 1, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+  );
+  const y = interpolate(frame, [0, 6], [12, 0], { extrapolateRight: "clamp" });
 
   return (
     <AbsoluteFill
       style={{
         justifyContent: "flex-end",
         alignItems: "center",
-        // Por encima del 15% inferior (UI de IG/TikTok)
         paddingBottom: SAFE.bottom,
         paddingLeft: SAFE.side,
         paddingRight: SAFE.side,
@@ -116,32 +107,39 @@ const CaptionPage: React.FC<{ page: TikTokPage; highlight: string }> = ({
     >
       <div
         style={{
+          opacity,
+          transform: `translateY(${y}px)`,
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "0.06em 0.30em",
           fontFamily: theme.fonts.sans,
           fontWeight: theme.weight.extrabold,
-          fontSize: 86,
-          lineHeight: 1.1,
+          fontSize: 52,
+          lineHeight: 1.16,
           textAlign: "center",
           textTransform: "uppercase",
-          maxWidth: "90%",
-          whiteSpace: "pre-wrap",
-          // Contraste alto: stroke + sombra sutil sobre cualquier fondo.
-          color: theme.colors.text,
-          WebkitTextStroke: `2px ${theme.colors.stroke}`,
-          textShadow: "0 6px 24px rgba(0,0,0,0.55)",
+          letterSpacing: theme.tracking.hook,
+          maxWidth: 900,
+          textShadow: "0 4px 20px rgba(0,0,0,0.9), 0 2px 4px rgba(0,0,0,0.95)",
         }}
       >
-        {page.tokens.map((token) => {
-          const isActive =
-            token.fromMs <= absoluteTimeMs && token.toMs > absoluteTimeMs;
+        {page.tokens.map((tk, i) => {
+          const t = tk.text.trim();
+          if (!t) return null;
+          const active = absMs >= tk.fromMs && absMs < tk.toMs;
+          const spoken = absMs >= tk.toMs;
           return (
             <span
-              key={`${token.fromMs}-${token.text}`}
+              key={i}
               style={{
-                color: isActive ? highlight : theme.colors.text,
-                whiteSpace: "pre",
+                display: "inline-block",
+                color: active ? theme.colors.accent : theme.colors.text,
+                opacity: active || spoken ? 1 : 0.5,
+                transform: active ? "scale(1.07)" : "scale(1)",
               }}
             >
-              {token.text}
+              {t}
             </span>
           );
         })}

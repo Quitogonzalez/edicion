@@ -19,6 +19,13 @@ metadata:
 > Lee `project.md` (raíz del proyecto) ANTES de empezar: tiene la memoria de sesión,
 > los reels en curso y las decisiones de marca. Actualízalo al terminar.
 
+> **Preferencias de Quito (aprendizajes) → viven en OBSIDIAN**, no acá. Léelas ANTES
+> de editar: `${OBSIDIAN_VAULT_PATH:-$HOME/REPOS/mi-segundo-cerebro}/20-LLM/raw/redsocialbot/aprendizajes-edicion.md`
+> (gusto de cortes/audio/LUT/texto/karaoke/cierre — evita re-preguntar lo ya sabido).
+> La skill **`learning`** nutre esa nota; el agente **`reel-editor`** (`.claude/agents/reel-editor.md`)
+> la lee y ejecuta la edición. El **flujo técnico exacto** está en `references/pipeline.md`.
+> Si el vault no está montado, seguí igual y avisá que las preferencias no cargaron.
+
 ## La marca en 6 líneas (detalle en `references/brand-guide.md`)
 - Dev de 20 años, build-in-public sobre IA. Tono cercano, directo, **anti-vendehúmo**, español chileno.
 - 4 pilares: (1) Dirigiendo a la IA · (2) Construyendo en público · (3) Disciplina y sistema · (4) Opinión con criterio. **Cada reel pertenece claro a UNO.**

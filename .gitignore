@@ -17,3 +17,13 @@ edit/
 !public/**/*.mp4
 !public/**/*.mov
 !src/**/*.mp4
+
+# footage de trabajo enlazado a public (no versionar)
+# La excepción !public/**/*.mp4 de arriba los dejaría entrar: van uno por uno.
+# GitHub avisa sobre archivos >50 MB y rechaza los >100 MB.
+public/reel1.mp4
+public/reel1_1.1x.mp4
+public/plaza_base.mp4
+
+# graphify knowledge graph (local, regenerable)
+graphify-out/
