@@ -22,8 +22,7 @@ tipo editor + **un solo color de acento** (`#3FB950`), captions karaoke, anti-ve
 3. La skill `reel-editor` orquesta todo con las reglas de marca (incluida la regla crítica:
    **nunca sobrescribir una escena — siempre crear V2/V3**).
 
-📘 **Guía completa de uso y delegación:** [`Resources/GUIA-DE-USO.md`](Resources/GUIA-DE-USO.md)
-(o el PDF `Resources/GUIA-DE-USO.pdf`).
+La guía completa de uso (`Resources/GUIA-DE-USO.md`) queda fuera del repo: es material personal, no versionado.
 
 ## Stack
 | Herramienta | Rol |
@@ -38,7 +37,7 @@ tipo editor + **un solo color de acento** (`#3FB950`), captions karaoke, anti-ve
 ## Estructura
 ```
 .claude/skills/reel-editor/   La skill que orquesta (SKILL.md + references/)
-Resources/                    Lineamientos + GUIA-DE-USO (md/pdf) + cheatsheet
+Resources/                    Lineamientos personales (local, no versionado)
 src/                          theme · fonts · components (Karaoke, motion) · scenes · Reel · Root
 scripts/                      transcribe.py (adapter) · silences.py
 footage/ transcripts/ out/    media (gitignored) · project.md (memoria de sesión)

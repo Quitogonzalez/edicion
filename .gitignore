@@ -27,3 +27,13 @@ public/plaza_base.mp4
 
 # graphify knowledge graph (local, regenerable)
 graphify-out/
+
+# Material personal: vive en local y en el vault, no se versiona.
+# Se sacó de toda la historia el 2026-09-12 con git filter-repo.
+Resources/
+bitacora/
+ESTADO.md
+project.md
+docs/superpowers/
+public/pngs/
+public/*.captions.json
