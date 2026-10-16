@@ -37,3 +37,6 @@ project.md
 docs/superpowers/
 public/pngs/
 public/*.captions.json
+
+# Fichas de idea (skill ficha-idea): material personal, igual que project.md.
+ideas/

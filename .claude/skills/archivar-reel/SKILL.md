@@ -43,7 +43,7 @@ verificar.
 - **Receta de edición:** versiones creadas (de `out/` + `project.md`), captions
   (motor), motion graphics/escenas (`src/scenes/`, `src/components/`), tema/acento
   (`src/theme.ts`).
-- Pregunta solo lo que falte y no esté en el material: **ángulo, pilar (de los 4),
+- Pregunta solo lo que falte y no esté en el material: **ángulo, pilar (de los 3, ver `pilares.md`),
   plataformas, duración real, estado** (listo / publicado).
 
 ### 2. Archivar en Drive (rclone)
