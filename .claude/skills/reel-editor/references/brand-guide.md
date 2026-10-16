@@ -10,11 +10,12 @@ hoy **sin humo**. No vendo "hazte rico con IA". Muestro el proceso real: lo que
 funciona, lo que rompo, cómo pienso. Vulnerable cuando corresponde (cuento lo que
 fallé antes de lo que logré). Español chileno natural.
 
-## Los 4 pilares (cada reel pertenece claro a UNO)
-1. **Dirigiendo a la IA** — cómo le saco jugo real a modelos/agentes.
-2. **Construyendo en público** — detrás de escena de lo que estoy creando.
-3. **Disciplina y sistema** — cómo me organizo, hábitos, segundo cerebro.
-4. **Opinión con criterio** — tomas contracorriente, bien fundadas.
+## Los 3 pilares (cada reel pertenece claro a UNO)
+Única fuente: `~/REPOS/mi-segundo-cerebro/30-PERSONAL/marca-personal/pilares.md`. Si esto no calza con ese archivo, manda ese archivo.
+1. **Construir, hoy con IA** — cosas útiles que de verdad uso construyendo.
+2. **Negocios y plata** — prueba de founder en vivo.
+3. **Vida y equilibrio** — el anti-hustle: construir en serio sin quemar la vida.
+Construir en público y opinión con criterio son ángulos que cruzan los 3, no pilares.
 
 ## Estructura (esqueleto de todo reel)
 | Bloque | Tiempo | Qué pasa |

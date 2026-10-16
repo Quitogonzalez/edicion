@@ -7,7 +7,7 @@ dirigiendo a Claude Code. **Yo dirijo, Claude ejecuta.**
 Pasar de editar a mano (horas) a **dirigir la edición con prompts** (minutos), manteniendo
 la marca: dev build-in-público sobre IA, estética **minimalista y cercana**, fondo oscuro
 tipo editor + **un solo color de acento** (`#3FB950`), captions karaoke, anti-vendehúmo.
-4 pilares: Dirigiendo a la IA · Construyendo en público · Disciplina y sistema · Opinión con criterio.
+Pilares: los 3 de `~/REPOS/mi-segundo-cerebro/30-PERSONAL/marca-personal/pilares.md` (única fuente): (1) Construir, hoy con IA · (2) Negocios y plata · (3) Vida y equilibrio.
 
 ## Cómo funciona — 2 ambientes
 1. **El corte** → `video-use` + transcripción gratis con **MacWhisper** (sin pagar ElevenLabs):

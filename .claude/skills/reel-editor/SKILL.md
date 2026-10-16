@@ -28,7 +28,7 @@ metadata:
 
 ## La marca en 6 líneas (detalle en `references/brand-guide.md`)
 - Dev de 20 años, build-in-public sobre IA. Tono cercano, directo, **anti-vendehúmo**, español chileno.
-- 4 pilares: (1) Dirigiendo a la IA · (2) Construyendo en público · (3) Disciplina y sistema · (4) Opinión con criterio. **Cada reel pertenece claro a UNO.**
+- Pilares: los 3 de `~/REPOS/mi-segundo-cerebro/30-PERSONAL/marca-personal/pilares.md` (única fuente): (1) Construir, hoy con IA · (2) Negocios y plata · (3) Vida y equilibrio. **Cada reel pertenece claro a UNO.**
 - Estética: **minimalista y cercana**, dev moderno. Fondo oscuro tipo editor, texto casi-blanco, **UN** color de acento (`src/theme.ts`).
 - Specs: **9:16, 1080×1920, 30fps, 15–40s**, captions karaoke quemados, safe zones (nada en 15% inferior / 10% superior).
 - Estructura: Hook (0–3s) → Contexto (3–10s) → Desarrollo (10–30s) → CTA. **El hook se diseña primero.**

@@ -2,7 +2,7 @@
 tipo: reel-producido
 slug: <slug>
 fecha: <AAAA-MM-DD>
-pilar: <Dirigiendo a la IA | Construyendo en público | Disciplina y sistema | Opinión con criterio>
+pilar: <Construir | Negocios y plata | Vida y equilibrio>
 estado: <listo | publicado | archivado>
 duracion: <segundos>s
 plataformas: [instagram, tiktok]
