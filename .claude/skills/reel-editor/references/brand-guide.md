@@ -35,7 +35,7 @@ Construir en público y opinión con criterio son ángulos que cruzan los 3, no 
 - Densidad: **una idea por pantalla. Aire.**
 
 ## Specs técnicas (no negociable)
-9:16 · 1080×1920 · 30fps (60 solo si hay mucho movimiento de pantalla) · 15–40s
+9:16 · 1080×1920 · 30fps (60 solo si hay mucho movimiento de pantalla) · 30–60s
 (justificar si pasa de 45s) · H.264 MP4 bitrate alto (≥10 Mbps) · audio AAC 48kHz ·
 sin marca de agua · **captions quemados siempre** · safe zones: nada clave en 15%
 inferior ni 10% superior.
