@@ -105,13 +105,13 @@ Mapa de `src/components` contra el repertorio, para no reescribir lo que ya est�
 | `KaraokeCaptions.tsx` | X01 | Grupos de ~1.1 s, palabra activa en verde. |
 | `LowerThirdCTA.tsx` | X03 | Tercio inferior, bajo el sujeto. |
 | `motion.ts` | X02, R07 | `fadeUp` coincide con X02. `popIn` tiene rebote (damping 12): sólo para énfasis justificado. |
-| `StartTransition.tsx` | ninguno | Un panel que sube al inicio es un barrido de presentación. Decidir si se reescribe como T02 o se retira. |
+| `StartTransition.tsx` | ninguno | Un panel que sube al inicio es un barrido de presentación. Recomendación: retirarlo. El colado de los primeros segundos se recorta en el corte; si el hook necesita esos segundos, un fundido de 8 frames (T02). |
 
 ## Archivos
 
 - `README.md`: esta página. Principios, repertorio y reglas.
 - `ficha.md`: plantilla de una ficha por efecto.
-- `fichas/<id>-<nombre>.md`: una ficha por efecto, creada desde la plantilla. La carpeta se crea con la primera ficha.
+- `fichas/<id>-<nombre>.md`: una ficha por efecto, creada desde la plantilla. Ya existen las 25.
 
 El repo es público: las fichas no llevan rutas personales ni material de los reels.
 
@@ -121,16 +121,18 @@ El repo es público: las fichas no llevan rutas personales ni material de los re
 2. **Probar.** Se prueba en su versión básica sobre un video real, en el Mac. El costo de render se mide con el mismo reel de prueba para todos los efectos, para que los números sean comparables.
 3. **Ajustar.** Sólo si el video lo pide. Cada ajuste se escribe en la ficha con su motivo.
 4. **Veredicto.** Lo pone quien dirige el reel, nunca el agente que monta. Los valores son:
-   - *Favorito:* el que se usa por defecto en su familia. Como máximo uno por familia.
-   - *Aprobado:* sirve en reels, sin ser el preferido.
+   - *Favorito:* el que se usa por defecto en su familia. Como máximo uno por familia, y sólo después de dos reels reales.
+   - *Aprobado:* sirve en reels, sin ser el preferido. Exige haberlo usado en al menos un reel real.
    - *Sin probar:* nuevo o sin medir.
    - *Rechazado:* no se usa. La ficha queda con el motivo para no volver a proponerlo.
 
 La validación visual y auditiva la hace quien dirige el reel. El agente no puede ver ni oír el render.
 
+Orden de prueba: primero T01, X01, C02, R02, A01 y A03, porque aparecen en casi todos los reels. El resto queda en *sin probar* hasta que un reel lo pida.
+
 ## Pendiente
 
-- Crear las fichas de los 25 efectos. Ninguna existe todavía.
 - Medir el costo de render en el Mac, con y sin cada efecto.
-- Decidir el destino de `StartTransition.tsx`.
+- Probar T01, X01, C02, R02, A01 y A03, y poner sus veredictos.
+- Retirar `StartTransition.tsx`: decidido, pero el cambio de código no está hecho.
 - Validar los valores de partida con el primer reel de prueba.
