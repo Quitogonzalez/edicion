@@ -1,6 +1,6 @@
 ---
 name: ficha-idea
-description: Arma y revisa la ficha de una idea de reel ANTES del guion. Úsala cuando Quito diga "tengo una idea para un reel", "arma la ficha", "esta idea sirve?", "qué grabo esta semana", o cuando reel-editor arranque un reel sin ficha. Llena tesis, pilar, 3 ganchos, dato propio, estructura de 30-60 s, referencia, comparación contra su mediana y condición de descarte, y la valida con ficha.py. NO escribe el guion final (eso es social-media-strategist) ni edita (eso es reel-editor).
+description: Prepara una idea antes del guion con tesis, fuente, mirada de Quito, aperturas verbal y visual, estructura y forma de revisarla. Admite reflexiones sobre libros/podcasts sin exigir cifras ni resultados propios. No escribe el guion final ni edita video.
 allowed-tools:
   - Read
   - Write
@@ -9,52 +9,48 @@ allowed-tools:
 
 # ficha-idea
 
-Lo que más tiempo le toma a Quito no es editar: es definir bien la idea. Esta
-ficha obliga a que cada idea llegue con un dato suyo y una apuesta medible
-antes de gastar una hora en guion y edición.
+La ficha prepara una conversación y una pieza concreta. `ficha.py` comprueba
+campos y coherencia temporal; no juzga interés ni predice viralidad.
+La ficha operativa vive en **la misma página de Notion**. `ideas/` puede guardar
+un artefacto técnico enlazado desde ella; no es otro calendario ni backlog.
 
-El porqué de cada campo, con su caso real:
-1. **Evidencia propia.** Los reels de tips genéricos de IA quedaron bajo su
-   mediana (2.017 y 2.517 vistas). El de un caso real como freelance sacó 5.247.
-2. **Tres ganchos.** El gancho se elige comparando, no con el primero que sale.
-3. **Apuesta contra la mediana.** Sin un número de referencia no hay forma de
-   saber después si la idea funcionó o solo pareció buena.
-4. **Descarte.** Una idea sin condición para morir se repite aunque no rinda.
+## Contexto que recuperas
 
-## Fuentes que lees antes de llenarla
+1. Lee el índice editorial vigente y solo sus criterios pertinentes:
+   `${OBSIDIAN_VAULT_PATH:-$HOME/REPOS/mi-segundo-cerebro}/20-LLM/raw/redsocialbot/conocimiento-editorial/README.md`.
+2. Consulta `estrategia.md`, `voice.md` y `guia-produccion-reels.md` en
+   `30-PERSONAL/marca-personal/` del vault. La preparación habitual es contexto
+   y punteo para hablar. No alteres la voz curada.
+3. Recupera la ficha actual de Notion y feedback de esa pieza. Antes de edición,
+   lee `20-LLM/raw/redsocialbot/aprendizajes-edicion.md`.
+4. Usa Radar para métricas con plataforma, fecha y procedencia. Una mediana de
+   Instagram no es benchmark de YouTube. Si falta muestra comparable, ND.
 
-1. Reglas de marca (única fuente): `pilares.md`, `voice.md` y
-   `guia-produccion-reels.md` en
-   `${OBSIDIAN_VAULT_PATH:-$HOME/REPOS/mi-segundo-cerebro}/30-PERSONAL/marca-personal/`.
-2. Mediana y lo que ya se probó: `C:\agentes\data\redes\aprendizajes.md` en el PC.
-   Desde el Mac: `ssh motor 'Get-Content C:\agentes\data\redes\aprendizajes.md'`.
-   Copia la mediana con su fecha; si el archivo no responde, dilo y no inventes
-   el número.
-3. Ganchos de referentes: `_research/competencia-2026-10-01/04-hooks-quito.json`
-   (86 ganchos clasificados por familia) en la misma carpeta de marca.
-4. Preferencias de edición: `20-LLM/raw/redsocialbot/aprendizajes-edicion.md`.
+## Preparación
 
-## Proceso
+1. Identifica el tipo: **reflexión**, experiencia, demo, actualidad o idea.
+   Para reflexiones, separa fuente y mirada literal de Quito. Un libro necesita
+   título/autor y pasaje, capítulo o página de su edición; un podcast, episodio
+   y enlace, más minuto si consta. Una conversación propia también puede ser
+   fuente. Distingue cita comprobada, resumen e interpretación.
+2. Una reflexión no necesita anécdota ni resultado personal. Para experiencias
+   y demos, pide evidencia real si falta; puede ser cualitativa. No inventes
+   números para completar campos. Si ya explicó su postura, trabaja con ella;
+   si falta, haz una sola pregunta concreta y espera.
+3. Desarrolla la tesis, tres entradas y lo que promete cada una. Valora frase,
+   primera imagen y contexto de quien mira. Los puntajes del helper vecino
+   son heurísticos; no elijas una apertura solo por su nota.
+4. Completa `plantilla.md` como artefacto enlazado y ejecuta:
+   `python3 .claude/skills/ficha-idea/ficha.py ideas/<archivo>.md`.
+   Acuerda duración por pieza. Una ficha LISTA aún no está aprobada.
+5. Presenta lo concreto y conserva el alcance del feedback: aprobar una
+   apertura no aprueba guion, montaje o publicación. Mantén la pauta vigente
+   en su página; no acumules V1/V2/V3 allí.
 
-1. Copia `plantilla.md` a `ideas/AAAA-MM-DD-<slug>.md` en la raíz del repo.
-2. Llena los 8 campos. Si Quito no te dio el dato propio, pregúntaselo: es el
-   único campo que no puedes buscar tú.
-3. Corre el revisor y arregla lo que marque:
-   ```bash
-   python3 .claude/skills/ficha-idea/ficha.py ideas/<archivo>.md
-   ```
-4. Muéstrale a Quito la tesis, los 3 ganchos con su puntaje y la apuesta. Él
-   elige el gancho; tú recomiendas uno con su motivo.
-5. Con su OK, cambia `estado: borrador` a `estado: aprobada` y pasa al guion.
+## Revisión tras publicar
 
-## Después de publicar
-
-A las 48 h, anota en la misma ficha las vistas reales y si cumplió la
-condición de descarte. Si contradice algo de `aprendizajes.md`, propón la línea
-nueva para ese archivo.
-
-## Qué no es
-
-`ficha.py` revisa que la ficha esté completa, no que la idea sea buena. El
-puntaje de los ganchos sale de `gancho-y-descripcion/gancho.py`: filtra
-saludos y ganchos sin nada concreto, no predice vistas.
+Conserva enlace publicado, fecha y métricas observadas con su fuente. Registra
+qué aprendimos y qué queda sin saber. Muchas vistas no demuestran retención
+ni causalidad, y una muestra pequeña no obliga a descartar un tema.
+El feedback de Quito queda literal, con revisión y alcance; no se convierte
+por defecto en una regla universal.

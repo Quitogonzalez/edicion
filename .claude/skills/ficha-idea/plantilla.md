@@ -2,35 +2,44 @@
 idea: <slug-corto>
 fecha: <AAAA-MM-DD>
 estado: borrador
+notion: <URL de su página operativa>
 ---
 
+## Tipo
+<reflexión | experiencia | demo | actualidad | idea>
+
 ## Tesis
-<Una frase: qué afirmas y por qué alguien lo mandaría a un amigo.>
+<Qué queremos decir y por qué interesa a quien mira.>
 
 ## Pilar
-<Construir | Negocios y plata | Vida y equilibrio>
+<Construir, hoy con IA | Emprendimiento y proyectos | Vida y equilibrio>
+
+## Fuente
+<Autor, título y enlace/archivo; pasaje, capítulo/página de su edición o minuto si consta. Separa cita comprobada, resumen e interpretación.>
+
+## Mirada de Quito
+<Su postura literal; no escribir una creencia o vivencia por él.>
 
 ## Ganchos
-1. <Gancho uno, hasta 12 palabras>
-2. <Gancho dos, otro ángulo>
-3. <Gancho tres, otro ángulo>
+1. <Frase y primera imagen; qué promete el desarrollo.>
+2. <Otra entrada posible.>
+3. <Otra entrada posible.>
 
 ## Evidencia propia
-<Un dato tuyo o un caso real que solo tú puedes contar: número, plata, plazo o nombre.>
+<Obligatoria solo para experiencias/demos: lo hecho u observado de verdad, puede ser cualitativo. En otros tipos omitir esta sección.>
 
 ## Estructura
-0-3 s: <gancho>
-3-15 s: <contexto o problema>
-15-40 s: <el caso o la solución>
-40-50 s: <cierre con pregunta o acción concreta>
+0-3 s: <entrada>
+3-15 s: <contexto>
+15-40 s: <desarrollo concreto>
+40-50 s: <cierre; tiempos orientativos, adaptar por pieza>
 
 ## Referencia
-<Link o creador, y por qué le funcionó: qué le robas.>
+<Qué mecanismo se estudia y dónde; si no hay referencia externa, explicar el ejemplo real de esta pieza.>
 
 ## Apuesta
-Mediana: <número> vistas (<fuente>, <fecha>)
-Tipo: <validada | apuesta>
-<Por qué: qué reel tuyo parecido superó la mediana, o qué estás probando por primera vez.>
+Tipo: apuesta
+<Qué queremos observar. Mediana comparable con fuente/fecha, o ND si aún no existe.>
 
-## Descarte
-<Condición con número para dejarla morir o pasarla a Trial Reel. Ej.: si a las 48 h tiene menos de 2.000 vistas, no se repite el formato.>
+## Revisión
+<Cómo contrastaremos claridad, interés y conexión; qué datos faltan y cuándo revisarlos. Sin umbral inventado de viralidad.>
